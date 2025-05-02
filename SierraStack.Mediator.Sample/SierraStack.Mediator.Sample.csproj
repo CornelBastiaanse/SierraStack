@@ -7,4 +7,12 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <Folder Include="RequestHandlers\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\SierraStack.Mediator\SierraStack.Mediator.csproj" />
+    </ItemGroup>
+
 </Project>
