@@ -5,6 +5,7 @@ namespace SierraStack.Mediator.Abstractions;
 /// </summary>
 /// <typeparam name="TNotification">The type of notification being handled.</typeparam>
 public interface INotificationHandler<TNotification>
+where TNotification : INotification
 {
     /// <summary>
     /// Handles the specified notification.
