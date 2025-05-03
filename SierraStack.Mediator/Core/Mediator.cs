@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using SierraStack.Mediator.Abstractions;
+using SierraStack.Mediator.Pipeline;
 
 namespace SierraStack.Mediator.Core;
 
@@ -26,9 +27,15 @@ public class Mediator : IMediator
     /// <inheritdoc/>
     public async Task<TResponse> SendAsync<TResponse>(IRequest<TResponse> request, CancellationToken cancellationToken = default)
     {
-        var handlerType = typeof(IRequestHandler<,>).MakeGenericType(request.GetType(), typeof(TResponse));
+        var requestType = request.GetType();
+        var handlerType = typeof(IRequestHandler<,>).MakeGenericType(requestType, typeof(TResponse));
         dynamic handler = _provider.GetRequiredService(handlerType);
-        return await handler.HandleAsync((dynamic)request, cancellationToken);
+
+        return await PipelineExecutor.ExecuteDynamic<TResponse>(
+            _provider,
+            request,
+            cancellationToken,
+            (req, ct) => handler.HandleAsync((dynamic)req, ct));
     }
     
     /// <inheritdoc/>
