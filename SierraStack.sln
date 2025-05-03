@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SierraStack.Mediator", "Sie
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SierraStack.Mediator.Sample", "SierraStack.Mediator.Sample\SierraStack.Mediator.Sample.csproj", "{A71F9D29-6804-41D6-BA96-43AF21E158A6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SierraStack.Mediator.Extensions.Microsoft", "SierraStack.Mediator.Extensions.Microsoft\SierraStack.Mediator.Extensions.Microsoft.csproj", "{F967B7EB-EE3B-4DF9-BE12-349DEC855D5D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -22,5 +24,9 @@ Global
 		{A71F9D29-6804-41D6-BA96-43AF21E158A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A71F9D29-6804-41D6-BA96-43AF21E158A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A71F9D29-6804-41D6-BA96-43AF21E158A6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F967B7EB-EE3B-4DF9-BE12-349DEC855D5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F967B7EB-EE3B-4DF9-BE12-349DEC855D5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F967B7EB-EE3B-4DF9-BE12-349DEC855D5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F967B7EB-EE3B-4DF9-BE12-349DEC855D5D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

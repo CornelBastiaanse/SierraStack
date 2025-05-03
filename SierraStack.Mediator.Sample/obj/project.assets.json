@@ -49,6 +49,20 @@
         "runtime": {
           "bin/placeholder/SierraStack.Mediator.dll": {}
         }
+      },
+      "SierraStack.Mediator.Extensions.Microsoft/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v9.0",
+        "dependencies": {
+          "Microsoft.Extensions.DependencyInjection.Abstractions": "9.0.4",
+          "SierraStack.Mediator": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/SierraStack.Mediator.Extensions.Microsoft.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/SierraStack.Mediator.Extensions.Microsoft.dll": {}
+        }
       }
     }
   },
@@ -117,11 +131,17 @@
       "type": "project",
       "path": "../SierraStack.Mediator/SierraStack.Mediator.csproj",
       "msbuildProject": "../SierraStack.Mediator/SierraStack.Mediator.csproj"
+    },
+    "SierraStack.Mediator.Extensions.Microsoft/1.0.0": {
+      "type": "project",
+      "path": "../SierraStack.Mediator.Extensions.Microsoft/SierraStack.Mediator.Extensions.Microsoft.csproj",
+      "msbuildProject": "../SierraStack.Mediator.Extensions.Microsoft/SierraStack.Mediator.Extensions.Microsoft.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "SierraStack.Mediator >= 1.0.0"
+      "SierraStack.Mediator >= 1.0.0",
+      "SierraStack.Mediator.Extensions.Microsoft >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -158,6 +178,9 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
+            "C:\\Users\\cornel\\Personal\\Repos\\SierraStack\\SierraStack.Mediator.Extensions.Microsoft\\SierraStack.Mediator.Extensions.Microsoft.csproj": {
+              "projectPath": "C:\\Users\\cornel\\Personal\\Repos\\SierraStack\\SierraStack.Mediator.Extensions.Microsoft\\SierraStack.Mediator.Extensions.Microsoft.csproj"
+            },
             "C:\\Users\\cornel\\Personal\\Repos\\SierraStack\\SierraStack.Mediator\\SierraStack.Mediator.csproj": {
               "projectPath": "C:\\Users\\cornel\\Personal\\Repos\\SierraStack\\SierraStack.Mediator\\SierraStack.Mediator.csproj"
             }
