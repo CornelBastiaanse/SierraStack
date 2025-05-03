@@ -1,0 +1,16 @@
+using SierraStack.Mediator.Abstractions;
+
+namespace SierraStack.Mediator.Tests;
+
+public class HelloNotificationHandler : INotificationHandler<HelloNotification>
+{
+    public static bool WasCalled { get; private set; }
+    
+    public static void Reset() => WasCalled = false;
+    
+    public Task HandleAsync(HelloNotification notification, CancellationToken cancellationToken)
+    {
+        WasCalled = true;
+        return Task.CompletedTask;
+    }
+}
