@@ -1,0 +1,29 @@
+name: "💡 Feature Request"
+description: Suggest an idea or improvement for SierraStack
+title: "[Feature]: "
+labels: [enhancement]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for the idea! Let us know what would make SierraStack more useful."
+
+  - type: input
+    id: use-case
+    attributes:
+      label: What are you trying to accomplish?
+      placeholder: e.g., Retry only on transient SQL exceptions
+    validations:
+      required: true
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed solution
+      placeholder: A new behavior or interface could...
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives you've considered

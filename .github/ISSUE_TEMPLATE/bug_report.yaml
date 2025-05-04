@@ -1,0 +1,50 @@
+name: "🐛 Bug Report"
+description: Report something that isn't working as expected
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: "Thanks for helping improve SierraStack.Mediator! Please complete the form below."
+
+  - type: input
+    id: affected-package
+    attributes:
+      label: Affected Package
+      placeholder: e.g., SierraStack.Mediator.Behaviors
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Package Version
+      placeholder: e.g., 0.1.0
+    validations:
+      required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: Describe the bug
+      description: What went wrong? What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction steps
+      description: How can we reproduce this bug?
+      placeholder: |
+        1. Use `XHandler` with `YBehavior`
+        2. Call `.SendAsync(...)`
+        3. Observe failure
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / stack trace (if applicable)
+      render: shell
