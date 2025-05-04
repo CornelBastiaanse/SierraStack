@@ -8,6 +8,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SierraStack.Mediator.Extens
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SierraStack.Mediator.Tests", "SierraStack.Mediator.Tests\SierraStack.Mediator.Tests.csproj", "{2C8C4496-6D57-494D-8724-305F825B724C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SierraStack.Mediator.Behaviors", "SierraStack.Mediator.Behaviors\SierraStack.Mediator.Behaviors.csproj", "{B645655E-8EAF-4C8F-A3B2-F62A8DEDB620}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -34,5 +36,9 @@ Global
 		{2C8C4496-6D57-494D-8724-305F825B724C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C8C4496-6D57-494D-8724-305F825B724C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C8C4496-6D57-494D-8724-305F825B724C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B645655E-8EAF-4C8F-A3B2-F62A8DEDB620}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B645655E-8EAF-4C8F-A3B2-F62A8DEDB620}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B645655E-8EAF-4C8F-A3B2-F62A8DEDB620}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B645655E-8EAF-4C8F-A3B2-F62A8DEDB620}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
