@@ -4,6 +4,7 @@ using Microsoft.Extensions.Hosting;
 using SierraStack.Mediator.Behaviors.Extensions;
 using SierraStack.Mediator.Core;
 using SierraStack.Mediator.Extensions.Microsoft.DependencyInjection;
+using SierraStack.Mediator.Sample.Notifications;
 using SierraStack.Mediator.Sample.Requests;
 
 var host = Host
@@ -22,3 +23,9 @@ var request = new Ping { Message = "Hello from SierraStack!" };
 var response = await mediator.SendAsync(request);
 
 Console.WriteLine(response);
+
+await mediator.PublishAsync(new Pinged
+{
+    Source = "PingHandler",
+    Timestamp = DateTime.UtcNow
+});
