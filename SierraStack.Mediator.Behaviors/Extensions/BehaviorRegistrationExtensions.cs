@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using SierraStack.Mediator.Behaviors.Logging;
+using SierraStack.Mediator.Behaviors.Performance;
 using SierraStack.Mediator.Behaviors.Retry;
 using SierraStack.Mediator.Behaviors.Validation;
 using SierraStack.Mediator.Pipeline;
@@ -31,11 +32,23 @@ public static class BehaviorRegistrationExtensions
         return services;
     }
 
+    public static IServiceCollection AddPerformanceBehavior(this IServiceCollection services, Action<PerformanceBehaviorOptions>? configure = null)
+    {
+        services.AddOptions<PerformanceBehaviorOptions>();
+        
+        if (configure is not null)
+            services.Configure(configure);
+        
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PerformanceBehavior<,>));
+        return services;
+    }
+
     public static IServiceCollection AddSierraStackBehaviors(this IServiceCollection services)
     {
         return services
             .AddLoggingBehavior()
             .AddValidationBehavior()
-            .AddRetryBehavior();
+            .AddRetryBehavior()
+            .AddPerformanceBehavior();
     }
 }
