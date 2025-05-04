@@ -1,5 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using SierraStack.Mediator.Behaviors.Logging;
+using SierraStack.Mediator.Behaviors.Retry;
 using SierraStack.Mediator.Behaviors.Validation;
 using SierraStack.Mediator.Pipeline;
 
@@ -19,10 +20,22 @@ public static class BehaviorRegistrationExtensions
         return services;
     }
 
+    public static IServiceCollection AddRetryBehavior(this IServiceCollection services, Action<RetryBehaviorOptions>? configure = null)
+    {
+        services.AddOptions<RetryBehaviorOptions>();
+        
+        if (configure is not null)
+            services.Configure(configure);
+        
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RetryBehavior<,>));
+        return services;
+    }
+
     public static IServiceCollection AddSierraStackBehaviors(this IServiceCollection services)
     {
         return services
             .AddLoggingBehavior()
-            .AddValidationBehavior();
+            .AddValidationBehavior()
+            .AddRetryBehavior();
     }
 }
