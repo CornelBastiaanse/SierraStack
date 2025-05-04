@@ -100,3 +100,5 @@ Please open an issue or pull request to get started.
 
 ## 🔗 Repository
 https://github.com/CornelBastiaanse/SierraStack
+
+📍 See the [full roadmap](./ROADMAP.md) for upcoming features and plans.
