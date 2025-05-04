@@ -8,8 +8,15 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\SierraStack.Mediator.Behaviors\SierraStack.Mediator.Behaviors.csproj" />
       <ProjectReference Include="..\SierraStack.Mediator.Extensions.Microsoft\SierraStack.Mediator.Extensions.Microsoft.csproj" />
       <ProjectReference Include="..\SierraStack.Mediator\SierraStack.Mediator.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="FluentValidation" Version="10.4.0" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="10.4.0" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.4" />
     </ItemGroup>
 
 </Project>

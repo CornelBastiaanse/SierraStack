@@ -1,26 +1,24 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using FluentValidation;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using SierraStack.Mediator.Behaviors.Extensions;
 using SierraStack.Mediator.Core;
 using SierraStack.Mediator.Extensions.Microsoft.DependencyInjection;
-using SierraStack.Mediator.Pipeline;
-using SierraStack.Mediator.Sample.Behaviors;
-using SierraStack.Mediator.Sample.RequestHandlers;
 using SierraStack.Mediator.Sample.Requests;
 
-// Set up DI
-var services = new ServiceCollection();
+var host = Host
+    .CreateDefaultBuilder()
+    .ConfigureServices(services =>
+    {
+        services.AddSierraStackMediator(typeof(Program).Assembly);
+        services.AddSierraStackBehaviors();
+        services.AddValidatorsFromAssembly(typeof(Program).Assembly);
+    })
+    .Build();
+    
+var mediator = host.Services.GetRequiredService<IMediator>();
 
-// Add the mediator
-services.AddSierraStackMediator(typeof(PingHandler).Assembly);
-
-// Add a behavior
-services.AddTransient(typeof(IPipelineBehavior<,>), typeof(LoggingBehavior<,>));
-
-var provider = services.BuildServiceProvider();
-
-// Resolve the mediator
-var mediator = provider.GetRequiredService<IMediator>();
-
-// Send a request
-var request = new Ping { Message = "Hello, world!" };
+var request = new Ping { Message = "Hello from SierraStack!" };
 var response = await mediator.SendAsync(request);
-Console.WriteLine(response); // Output: Pong: Hello, world!
+
+Console.WriteLine(response);
