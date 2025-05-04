@@ -1,4 +1,6 @@
 using Microsoft.Extensions.DependencyInjection;
+using SierraStack.Mediator.Behaviors.Caching;
+using SierraStack.Mediator.Behaviors.ExceptionHandling;
 using SierraStack.Mediator.Behaviors.Logging;
 using SierraStack.Mediator.Behaviors.Performance;
 using SierraStack.Mediator.Behaviors.Retry;
@@ -43,12 +45,27 @@ public static class BehaviorRegistrationExtensions
         return services;
     }
 
+    public static IServiceCollection AddExceptionHandlingBehavior(this IServiceCollection services)
+    {
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(ExceptionHandlingBehavior<,>));
+        return services;
+    }
+    
+    public static IServiceCollection AddCachingBehavior(this IServiceCollection services)
+    {
+        services.AddMemoryCache();
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(CachingBehavior<,>));
+        return services;
+    }
+
     public static IServiceCollection AddSierraStackBehaviors(this IServiceCollection services)
     {
         return services
             .AddLoggingBehavior()
             .AddValidationBehavior()
             .AddRetryBehavior()
-            .AddPerformanceBehavior();
+            .AddPerformanceBehavior()
+            .AddExceptionHandlingBehavior()
+            .AddCachingBehavior();
     }
 }
