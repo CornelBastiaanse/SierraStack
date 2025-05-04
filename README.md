@@ -1,90 +1,106 @@
-# SierraStack
+# SierraStack.Mediator
 
-**SierraStack** is a modular .NET framework built for clean, maintainable architecture. It starts with a powerful mediator library for in-process messaging—ideal for CQRS, request/response, and event-driven designs.
+**SierraStack.Mediator** is a lightweight, extensible in-process mediator for .NET. It provides a clean way to handle request/response messaging, supports pipeline behaviors, and is designed to be a modern, open-source alternative to MediatR — built for performance, simplicity, and testability.
 
-## 🔍 Overview
+---
 
-SierraStack.Mediator provides a simple and extensible alternative to MediatR:
+## ✨ Features
 
-- Minimal dependencies
-- Clean request/response & notification pattern
-- Built-in pipeline behaviors (logging, validation, etc.)
-- Full DI integration with Microsoft.Extensions.DependencyInjection
-- Foundation for a larger full-stack service framework
+- ✅ Request/Response messaging with `IRequest<T>` and `IRequestHandler<TRequest, TResponse>`
+- ✅ In-process event publishing via `INotification`
+- ✅ Built-in pipeline behaviors for:
+    - Logging
+    - Validation (FluentValidation)
+    - Retry (Polly)
+    - Caching
+    - Performance measurement
+    - Exception handling
+- ✅ Zero external dependencies in core
+- ✅ Seamless integration with Microsoft.Extensions.DependencyInjection
 
-## 📦 Packages
-
-- `SierraStack.Mediator` – Core mediator logic
-- `SierraStack.Mediator.Extensions.Microsoft` – Extensions for .NET DI container
-
-## 📁 Example
-
-```csharp
-public class Ping : IRequest<string> { }
-
-public class PingHandler : IRequestHandler<Ping, string>
-{
-    public Task<string> Handle(Ping request, CancellationToken cancellationToken)
-        => Task.FromResult("Pong");
-}
-
-var services = new ServiceCollection();
-services.AddSierraStackMediator(typeof(PingHandler).Assembly);
-```
-
-## 🚀 Roadmap
-
-### ✅ Core Features
-- [ ] Basic mediator (Send/Publish)
-- [ ] Request/Response handlers
-- [ ] Notification handlers
-- [ ] DI support via Microsoft.Extensions.DependencyInjection
-
-### 🔄 Pipeline Behaviors
-- [ ] Logging behavior
-- [ ] Validation behavior
-- [ ] Retry behavior
-- [ ] Authorization behavior (optional)
-
-### 🔌 Pre/Post Processors
-- [ ] Request pre-processors
-- [ ] Response post-processors
-
-### 📦 Packaging & Ecosystem
-- [ ] NuGet packaging
-- [ ] Separate abstractions project
-- [ ] Example console/web apps
-
-### 🧪 Testing & Performance
-- [ ] Unit test coverage
-- [ ] Benchmarks
-
-### 🔧 Advanced Features (Future)
-- [ ] Request cancellation support
-- [ ] Scoped & open generic resolution improvements
-- [ ] Request decorators
-
-### 🧱 Long-Term Vision
-- [ ] HTTP/RPC transport layer
-- [ ] Serialization support
-- [ ] Hosting/runtime infrastructure
-- [ ] Full-stack service framework (SierraStack.Web, SierraStack.Rpc, etc.)
+---
 
 
 ## 📦 Installation
 
-SierraStack.Mediator will soon be available on NuGet.
-
-Once published, you’ll be able to install it via the .NET CLI:
+Coming soon on NuGet:
 
 ```bash
 dotnet add package SierraStack.Mediator
+dotnet add package SierraStack.Mediator.Behaviors
 dotnet add package SierraStack.Mediator.Extensions.Microsoft
 ```
 
-Or via the NuGet Package Manager:
+📌 Until published, clone this repo and reference the projects directly.
 
-```mathematica
-Install-Package SierraStack.Mediator
-Install-Package SierraStack.Mediator.Extensions.Microsoft
+## 🚀 Getting Started
+### 1. Define a request
+```csharp
+public class Ping : IRequest<string> 
+{
+    public string Message { get; set; } = "Ping!";
+}
 ```
+### 2. Define a handler
+```csharp
+public class PingHandler : IRequestHandler<Ping, string>
+{
+    public Task<string> HandleAsync(Ping request, CancellationToken cancellationToken)
+    {
+        return Task.FromResult($"Pong: {request.Message}");
+    }
+}
+```
+### 3. Register services (using built-in DI)
+```csharp
+services.AddSierraStackMediator(typeof(PingHandler).Assembly);
+services.AddSierraStackBehaviors(); // optional
+```
+### 4. Use the mediator
+```csharp
+var result = await mediator.SendAsync(new Ping());
+// result => "Pong: Ping!"
+```
+
+## 🔌 Available Behaviors
+Install ```SierraStack.Mediator```.Behaviors and register built-in behaviors:
+```csharp
+services.AddSierraStackBehaviors();
+```
+
+Or register them individually:
+```csharp
+services
+    .AddLoggingBehavior()
+    .AddValidationBehavior()
+    .AddRetryBehavior()
+    .AddCachingBehavior()
+    .AddPerformanceBehavior()
+    .AddExceptionHandlingBehavior();
+```
+
+## 🧪 Testing
+All core components and built-in behaviors are covered with unit tests using xUnit. To run:
+```bash
+dotnet test
+```
+
+## 📚 Roadmap
+- [X] Core mediator interfaces and implementation
+- [X] Microsoft.Extensions.DependencyInjection integration
+- [X] Built-in behaviors (logging, retry, validation, etc.)
+- [X] Unit test coverage for all behaviors
+- [ ] Optional source generators
+- [ ] Own validation abstraction
+- [ ] Roslyn analyzers (usage hints)
+- [ ] Benchmarks vs MediatR
+
+## 📄 License
+Licensed under the [MIT License](LICENSE).
+
+## 👋 Contributing
+Contributions, suggestions, and ideas are welcome!
+Please open an issue or pull request to get started.
+
+## 🔗 Repository
+https://github.com/CornelBastiaanse/SierraStack

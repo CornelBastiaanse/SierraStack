@@ -1,0 +1,22 @@
+<Project>
+    <PropertyGroup>
+        <!-- Common metadata -->
+        <Authors>Cornel Bastiaanse</Authors>
+        <Company>Cornel Bastiaanse</Company>
+        <Copyright>© 2025 Cornel Bastiaanse</Copyright>
+        <RepositoryUrl>https://github.com/CornelBastiaanse/SierraStack</RepositoryUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <PackageProjectUrl>https://github.com/CornelBastiaanse/SierraStack</PackageProjectUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageTags>mediator;CQRS;pipeline;SierraStack;dotnet</PackageTags>
+
+        <!-- Common settings -->
+        <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <IncludeSource>true</IncludeSource>
+        <Deterministic>true</Deterministic>
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <EnablePackageValidation>true</EnablePackageValidation>
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    </PropertyGroup>
+</Project>
