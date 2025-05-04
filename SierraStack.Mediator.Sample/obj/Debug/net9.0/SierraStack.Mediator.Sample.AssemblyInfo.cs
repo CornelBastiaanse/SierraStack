@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SierraStack.Mediator.Sample")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b16af827b2f3bc6aad40a195c96160064a86e834")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+054f64203864a76064722ace354de1c07dbba02b")]
 [assembly: System.Reflection.AssemblyProductAttribute("SierraStack.Mediator.Sample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SierraStack.Mediator.Sample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

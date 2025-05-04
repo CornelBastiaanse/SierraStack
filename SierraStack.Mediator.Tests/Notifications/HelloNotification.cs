@@ -1,6 +1,6 @@
 using SierraStack.Mediator.Abstractions;
 
-namespace SierraStack.Mediator.Tests;
+namespace SierraStack.Mediator.Tests.Notifications;
 
 public class HelloNotification : INotification
 {

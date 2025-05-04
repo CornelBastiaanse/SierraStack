@@ -1,6 +1,7 @@
 using SierraStack.Mediator.Abstractions;
+using SierraStack.Mediator.Tests.Notifications;
 
-namespace SierraStack.Mediator.Tests;
+namespace SierraStack.Mediator.Tests.NotificationHandlers;
 
 public class HelloNotificationHandler : INotificationHandler<HelloNotification>
 {

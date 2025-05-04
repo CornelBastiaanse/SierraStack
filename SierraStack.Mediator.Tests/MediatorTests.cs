@@ -1,6 +1,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using SierraStack.Mediator.Core;
 using SierraStack.Mediator.Extensions.Microsoft.DependencyInjection;
+using SierraStack.Mediator.Tests.NotificationHandlers;
+using SierraStack.Mediator.Tests.Notifications;
+using SierraStack.Mediator.Tests.RequestHandlers;
+using SierraStack.Mediator.Tests.Requests;
 
 namespace SierraStack.Mediator.Tests;
 
