@@ -1,3 +1,9 @@
+![Build](https://github.com/CornelBastiaanse/SierraStack/actions/workflows/ci.yml/badge.svg)
+[![NuGet](https://img.shields.io/nuget/v/SierraStack.Mediator.svg)](https://www.nuget.org/packages/SierraStack.Mediator)
+[![NuGet](https://img.shields.io/nuget/v/SierraStack.Mediator.Behaviors.svg)](https://www.nuget.org/packages/SierraStack.Mediator.Behaviors)
+[![NuGet](https://img.shields.io/nuget/v/SierraStack.Mediator.Extensions.Microsoft.svg)](https://www.nuget.org/packages/SierraStack.Mediator.Extensions.Microsoft)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
+
 # SierraStack.Mediator
 
 **SierraStack.Mediator** is a lightweight, extensible in-process mediator for .NET. It provides a clean way to handle request/response messaging, supports pipeline behaviors, and is designed to be a modern, open-source alternative to MediatR — built for performance, simplicity, and testability.
