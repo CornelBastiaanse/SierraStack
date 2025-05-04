@@ -1,28 +1,40 @@
-using Microsoft.Extensions.Caching.Memory;
-using SierraStack.Mediator.Behaviors.Caching;
+using FluentValidation;
+using SierraStack.Mediator.Abstractions;
+using SierraStack.Mediator.Behaviors.Validation;
 
 namespace SierraStack.Mediator.Tests.Behaviors;
 
 public class ValidationBehaviorTests
 {
     [Fact]
-    public async Task Should_Cache_Response()
+    public async Task Should_Allow_Request_When_No_Validators()
     {
-        var cache = new MemoryCache(new MemoryCacheOptions());
-        var request = new SampleCacheableRequest();
+        var behavior = new ValidationBehavior<TestRequest, string>([]);
 
-        var behavior = new CachingBehavior<SampleCacheableRequest, string>(cache);
+        var response = await behavior.HandleAsync(new TestRequest(), CancellationToken.None, () => Task.FromResult("OK"));
 
-        var first = await behavior.HandleAsync(request, CancellationToken.None, () => Task.FromResult("result-1"));
-        var second = await behavior.HandleAsync(request, CancellationToken.None, () => Task.FromResult("result-2"));
-
-        Assert.Equal("result-1", first);
-        Assert.Equal("result-1", second); // Should use cached
+        Assert.Equal("OK", response);
     }
 
-    private class SampleCacheableRequest : ICacheableRequest<string>
+    [Fact]
+    public async Task Should_Throw_When_Validation_Fails()
     {
-        public string CacheKey => "test-key";
-        public TimeSpan? AbsoluteExpirationRelativeToNow => TimeSpan.FromMinutes(5);
+        var validator = new FailingValidator();
+        var behavior = new ValidationBehavior<TestRequest, string>([validator]);
+
+        var ex = await Assert.ThrowsAsync<ValidationException>(() =>
+            behavior.HandleAsync(new TestRequest(), CancellationToken.None, () => Task.FromResult("OK")));
+
+        Assert.Contains("Name is required", ex.Message);
+    }
+
+    private class TestRequest : IRequest<string> { }
+
+    private class FailingValidator : AbstractValidator<TestRequest>
+    {
+        public FailingValidator()
+        {
+            RuleFor(_ => "").Must(_ => false).WithMessage("Name is required");
+        }
     }
 }
