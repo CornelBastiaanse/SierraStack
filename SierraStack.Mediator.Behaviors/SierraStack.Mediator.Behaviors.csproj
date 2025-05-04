@@ -2,6 +2,7 @@
 
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
+        <Authors>Cornel Bastiaanse</Authors>
         <Version>0.1.0</Version>
         <PackageId>SierraStack.Mediator.Behaviors</PackageId>
         <Description>A set of plug-and-play pipeline behaviors for SierraStack.Mediator, including logging, validation, retry, caching, and performance measurement. Built to simplify cross-cutting concerns in .NET applications.</Description>
