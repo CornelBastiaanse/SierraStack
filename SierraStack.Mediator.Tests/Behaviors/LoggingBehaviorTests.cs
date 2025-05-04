@@ -1,5 +1,7 @@
-using FluentValidation;
-using SierraStack.Mediator.Behaviors.Validation;
+using Microsoft.Extensions.Logging;
+using Moq;
+using SierraStack.Mediator.Behaviors.Logging;
+using SierraStack.Mediator.Tests.Extensions;
 using SierraStack.Mediator.Tests.Requests;
 
 namespace SierraStack.Mediator.Tests.Behaviors;
@@ -7,36 +9,22 @@ namespace SierraStack.Mediator.Tests.Behaviors;
 public class LoggingBehaviorTests
 {
     [Fact]
-    public async Task Should_Allow_Request_When_No_Validators()
+    public async Task Should_Log_Before_And_After_Request()
     {
-        var behavior = new ValidationBehavior<TestRequest, string>([]);
-        
-        var response = await behavior.HandleAsync(
-            new TestRequest(), 
-            CancellationToken.None, 
-            () => Task.FromResult("OK"));
-        
-        Assert.Equal("OK", response);
-    }
-    
-    [Fact]
-    public async Task Should_Throw_When_Validation_Fails()
-    {
-        var validator = new FailingValidator();
-        var behavior = new ValidationBehavior<TestRequest, string>([validator]);
+        // Arrange
+        var loggerMock = new Mock<ILogger<LoggingBehavior<TestRequest, string>>>();
 
-        var exception = await Assert.ThrowsAsync<ValidationException>(() => behavior.HandleAsync(new TestRequest(), CancellationToken.None, () => Task.FromResult("OK")));
+        var behavior = new LoggingBehavior<TestRequest, string>(loggerMock.Object);
 
-        Assert.Contains("Name is required", exception.Message);
-    }
+        var request = new TestRequest();
 
-    private class FailingValidator : AbstractValidator<TestRequest>
-    {
-        public FailingValidator()
-        {
-            RuleFor(_ => "")
-                .Must(_ => false)
-                .WithMessage("Name is required");
-        }
+        // Act
+        var response = await behavior.HandleAsync(request, CancellationToken.None, () => Task.FromResult("success"));
+
+        // Assert
+        Assert.Equal("success", response);
+
+        loggerMock.VerifyLog(LogLevel.Information, "Handling request: TestRequest", Times.Once());
+        loggerMock.VerifyLog(LogLevel.Information, "Handled request: TestRequest", Times.Once());
     }
 }
