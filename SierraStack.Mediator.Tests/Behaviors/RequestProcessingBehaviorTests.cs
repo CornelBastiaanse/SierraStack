@@ -18,7 +18,7 @@ public class RequestProcessingBehaviorTests
             return Task.FromResult("result");
         });
 
-        Assert.Equal(new[] { "pre", "handler" }, log);
+        Assert.Equal(["pre", "handler"], log);
         Assert.Equal("result", result);
     }
     
@@ -35,7 +35,7 @@ public class RequestProcessingBehaviorTests
             return Task.FromResult("result");
         });
 
-        Assert.Equal(new[] { "handler", "post" }, log);
+        Assert.Equal(["handler", "post"], log);
         Assert.Equal("result", result);
     }
     
