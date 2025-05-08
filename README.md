@@ -10,6 +10,10 @@
 
 ---
 
+💬 **We're actively working on v0.2.0 and want your input!**  
+📌 Join the conversation in [this pinned issue](https://github.com/sierrastack/SierraStack/issues/4)  
+Let us know what you'd love to see next.
+
 ## ✨ Features
 
 - ✅ Request/Response messaging with `IRequest<T>` and `IRequestHandler<TRequest, TResponse>`
