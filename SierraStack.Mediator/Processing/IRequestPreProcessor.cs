@@ -1,15 +1,14 @@
 namespace SierraStack.Mediator.Processing;
 
 /// <summary>
-/// Executes logic before a request handler is invoked.
+/// Defines a processor that executes logic before a request handler is invoked.
 /// </summary>
 public interface IRequestPreProcessor<TRequest>
 {
     /// <summary>
-    /// Processes the request before it is handled.
+    /// Executes processing logic before the request is handled.
     /// </summary>
     /// <param name="request">The request to process.</param>
-    /// <param name="cancellationToken">The cancellation token to cancel the processing.</param>
-    /// <returns>A task that represents the asynchronous operation.</returns>
+    /// <param name="cancellationToken">A token to monitor for cancellation requests.</param>
     Task ProcessAsync(TRequest request, CancellationToken cancellationToken = default);
 }
