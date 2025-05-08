@@ -16,7 +16,7 @@ Let us know what you'd love to see next.
 
 ## ✨ Features
 
-- ✅ Request/Response messaging with `IRequest<T>` and `IRequestHandler<TRequest, TResponse>`
+- ✅ Request/Response messaging with `IRequest<TResponse>` and `IRequestHandler<TRequest, TResponse>`
 - ✅ In-process event publishing via `INotification`
 - ✅ Built-in pipeline behaviors for:
     - Logging
