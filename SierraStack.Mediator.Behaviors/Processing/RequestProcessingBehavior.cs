@@ -6,7 +6,7 @@ namespace SierraStack.Mediator.Behaviors.Processing;
 /// <summary>
 /// Executes registered pre-processors before the handler and post-processors after.
 /// </summary>
-public class PrePostProcessingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
+public class RequestProcessingBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
 {
     /// <summary>
     /// All registered pre-processors.
@@ -19,11 +19,11 @@ public class PrePostProcessingBehavior<TRequest, TResponse> : IPipelineBehavior<
     private readonly IEnumerable<IRequestPostProcessor<TRequest, TResponse>> _postProcessors;
     
     /// <summary>
-    /// Initializes a new instance of the <see cref="PrePostProcessingBehavior{TRequest, TResponse}"/> class.
+    /// Initializes a new instance of the <see cref="RequestProcessingBehavior{TRequest,TResponse}"/> class.
     /// </summary>
     /// <param name="preProcessors">All registered pre-processors.</param>
     /// <param name="postProcessors">All registered post-processors.</param>
-    public PrePostProcessingBehavior(
+    public RequestProcessingBehavior(
         IEnumerable<IRequestPreProcessor<TRequest>> preProcessors,
         IEnumerable<IRequestPostProcessor<TRequest, TResponse>> postProcessors)
     {

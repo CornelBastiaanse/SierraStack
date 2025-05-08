@@ -61,7 +61,7 @@ public static class BehaviorRegistrationExtensions
 
     public static IServiceCollection AddRequestProcessingBehavior(this IServiceCollection services)
     {
-        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(PrePostProcessingBehavior<,>));
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestProcessingBehavior<,>));
         return services;
     }
 
