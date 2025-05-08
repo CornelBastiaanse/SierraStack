@@ -3,6 +3,7 @@ using SierraStack.Mediator.Behaviors.Caching;
 using SierraStack.Mediator.Behaviors.ExceptionHandling;
 using SierraStack.Mediator.Behaviors.Logging;
 using SierraStack.Mediator.Behaviors.Performance;
+using SierraStack.Mediator.Behaviors.Processing;
 using SierraStack.Mediator.Behaviors.Retry;
 using SierraStack.Mediator.Behaviors.Validation;
 using SierraStack.Mediator.Pipeline;
@@ -58,6 +59,12 @@ public static class BehaviorRegistrationExtensions
         return services;
     }
 
+    public static IServiceCollection AddRequestProcessingBehavior(this IServiceCollection services)
+    {
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestProcessingBehavior<,>));
+        return services;
+    }
+
     public static IServiceCollection AddSierraStackBehaviors(this IServiceCollection services)
     {
         return services
@@ -66,6 +73,7 @@ public static class BehaviorRegistrationExtensions
             .AddRetryBehavior()
             .AddPerformanceBehavior()
             .AddExceptionHandlingBehavior()
-            .AddCachingBehavior();
+            .AddCachingBehavior()
+            .AddRequestProcessingBehavior();
     }
 }
