@@ -5,6 +5,7 @@ using SierraStack.Mediator.Behaviors.Logging;
 using SierraStack.Mediator.Behaviors.Performance;
 using SierraStack.Mediator.Behaviors.Processing;
 using SierraStack.Mediator.Behaviors.Retry;
+using SierraStack.Mediator.Behaviors.Timeout;
 using SierraStack.Mediator.Behaviors.Validation;
 using SierraStack.Mediator.Pipeline;
 
@@ -65,6 +66,17 @@ public static class BehaviorRegistrationExtensions
         return services;
     }
 
+    public static IServiceCollection AddTimeoutBehavior(this IServiceCollection services, Action<TimeoutBehaviorOptions>? configure = null)
+    {
+        services.AddOptions<TimeoutBehaviorOptions>();
+        
+        if (configure is not null)
+            services.Configure(configure);
+        
+        services.AddTransient(typeof(IPipelineBehavior<,>), typeof(TimeoutBehavior<,>));
+        return services;
+    }
+
     public static IServiceCollection AddSierraStackBehaviors(this IServiceCollection services)
     {
         return services
@@ -74,6 +86,7 @@ public static class BehaviorRegistrationExtensions
             .AddPerformanceBehavior()
             .AddExceptionHandlingBehavior()
             .AddCachingBehavior()
-            .AddRequestProcessingBehavior();
+            .AddRequestProcessingBehavior()
+            .AddTimeoutBehavior();
     }
 }
