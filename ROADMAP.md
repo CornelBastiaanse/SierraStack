@@ -29,10 +29,10 @@ Have an idea? Open a [discussion](https://github.com/CornelBastiaanse/SierraStac
 
 ## 🔄 Upcoming (v0.2.x)
 
-- [ ] `IRequestPreProcessor<T>` and `IRequestPostProcessor<T>` support
+- [X] `IRequestPreProcessor<TRequest>` and `IRequestPostProcessor<TRequest, TResponse>` support
+- [X] Timeout and CircuitBreaker behaviors
 - [ ] Source generator for handler resolution
 - [ ] Optional custom validation abstraction (to replace FluentValidation)
-- [ ] Timeout and CircuitBreaker behaviors
 - [ ] Metrics integration (OpenTelemetry or App Insights)
 - [ ] Add correlation ID behavior
 - [ ] Improve performance of pipeline executor
