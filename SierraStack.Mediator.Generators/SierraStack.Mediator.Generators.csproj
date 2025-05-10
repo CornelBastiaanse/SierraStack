@@ -5,6 +5,7 @@
         <LangVersion>latest</LangVersion>
         <OutputItemType>Analyzer</OutputItemType>
         <Pack>false</Pack>
+        <IsPackable>false</IsPackable>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <AssemblyName>SierraStack.Mediator.Generators</AssemblyName>
     </PropertyGroup>
