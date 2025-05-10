@@ -1,5 +1,7 @@
-using FluentValidation;
+using Microsoft.Extensions.Options;
 using SierraStack.Mediator.Pipeline;
+using SierraStack.Validation;
+using ValidationException = SierraStack.Validation.ValidationException;
 
 namespace SierraStack.Mediator.Behaviors.Validation;
 
@@ -8,11 +10,25 @@ namespace SierraStack.Mediator.Behaviors.Validation;
 /// </summary>
 public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse>
 {
+    /// <summary>
+    /// The collection of validators to run against the request.
+    /// </summary>
     private readonly IEnumerable<IValidator<TRequest>> _validators;
     
-    public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators)
+    /// <summary>
+    /// The options for configuring the validation behavior.
+    /// </summary>
+    private readonly ValidationBehaviorOptions _options;
+    
+    /// <summary>
+    /// Initializes a new instance of the <see cref="ValidationBehavior{TRequest, TResponse}"/> class.
+    /// </summary>
+    /// <param name="validators">The collection of validators to run against the request.</param>
+    /// <param name="options">The options for configuring the validation behavior. </param>
+    public ValidationBehavior(IEnumerable<IValidator<TRequest>> validators, IOptions<ValidationBehaviorOptions> options)
     {
         _validators = validators;
+        _options = options.Value;
     }
     
     /// <inheritdoc/>
@@ -21,20 +37,22 @@ public class ValidationBehavior<TRequest, TResponse> : IPipelineBehavior<TReques
         CancellationToken cancellationToken,
         RequestHandlerDelegate<TResponse> next)
     {
-        if (!_validators.Any())
-            return await next();
+        var failures = new List<ValidationFailure>();
+
+        foreach (var validator in _validators)
+        {
+            var result = await validator.ValidateAsync(request, cancellationToken);
+            if (!result.IsValid)
+                failures.AddRange(result.Errors);
+        }
+
+        if (failures.Count <= 0) return await next();
         
-        var context = new ValidationContext<TRequest>(request);
-        var results = await Task.WhenAll(_validators.Select(v => v.ValidateAsync(context, cancellationToken)));
-        
-        var failures = results
-            .SelectMany(r => r.Errors)
-            .Where(f => f is not null)
-            .ToList();
-        
-        if (failures.Count > 0)
+        _options.OnFailure?.Invoke(failures);
+
+        if (_options.ThrowOnFailure)
             throw new ValidationException(failures);
-        
+
         return await next();
     }
 }

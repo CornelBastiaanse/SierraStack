@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "3pllZQDVbUw=",
-  "success": true,
+  "dgSpecHash": "37XUwB4Hjbs=",
+  "success": false,
   "projectFilePath": "C:\\Users\\cornel\\Personal\\Repos\\SierraStack\\SierraStack.Mediator.Sample\\SierraStack.Mediator.Sample.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cornel\\.nuget\\packages\\fluentvalidation\\10.4.0\\fluentvalidation.10.4.0.nupkg.sha512",
@@ -39,5 +39,24 @@
     "C:\\Users\\cornel\\.nuget\\packages\\polly.core\\8.5.2\\polly.core.8.5.2.nupkg.sha512",
     "C:\\Users\\cornel\\.nuget\\packages\\system.diagnostics.eventlog\\9.0.4\\system.diagnostics.eventlog.9.0.4.nupkg.sha512"
   ],
-  "logs": []
+  "logs": [
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Warning As Error: Detected package downgrade: FluentValidation from 12.0.0 to 10.4.0. Reference the package directly from the project to select a different version. \r\n SierraStack.Mediator.Sample -> SierraStack.Mediator.Behaviors -> FluentValidation (>= 12.0.0) \r\n SierraStack.Mediator.Sample -> FluentValidation (>= 10.4.0)",
+      "libraryId": "FluentValidation",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    },
+    {
+      "code": "NU1605",
+      "level": "Error",
+      "message": "Warning As Error: Detected package downgrade: FluentValidation.DependencyInjectionExtensions from 12.0.0 to 10.4.0. Reference the package directly from the project to select a different version. \r\n SierraStack.Mediator.Sample -> SierraStack.Mediator.Behaviors -> FluentValidation.DependencyInjectionExtensions (>= 12.0.0) \r\n SierraStack.Mediator.Sample -> FluentValidation.DependencyInjectionExtensions (>= 10.4.0)",
+      "libraryId": "FluentValidation.DependencyInjectionExtensions",
+      "targetGraphs": [
+        "net9.0"
+      ]
+    }
+  ]
 }
