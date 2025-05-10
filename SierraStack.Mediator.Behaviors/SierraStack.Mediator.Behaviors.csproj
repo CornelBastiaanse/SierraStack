@@ -12,10 +12,12 @@
 
     <ItemGroup>
       <ProjectReference Include="..\SierraStack.Mediator\SierraStack.Mediator.csproj" />
+      <ProjectReference Include="..\SierraStack.Validation\SierraStack.Validation.csproj" />
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentValidation" Version="10.4.0" />
+      <PackageReference Include="FluentValidation" Version="12.0.0" />
+      <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
       <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="9.0.4" />
       <PackageReference Include="Microsoft.Extensions.Logging" Version="9.0.4" />
       <PackageReference Include="Polly" Version="8.5.2" />
