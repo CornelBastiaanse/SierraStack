@@ -4,7 +4,7 @@
         <TargetFramework>netstandard2.0</TargetFramework>
         <LangVersion>latest</LangVersion>
         <OutputItemType>Analyzer</OutputItemType>
-        <Pack>true</Pack>
+        <Pack>false</Pack>
         <IncludeBuildOutput>false</IncludeBuildOutput>
         <AssemblyName>SierraStack.Mediator.Generators</AssemblyName>
     </PropertyGroup>
