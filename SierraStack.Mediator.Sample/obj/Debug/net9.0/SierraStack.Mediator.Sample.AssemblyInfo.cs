@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("© 2025 Cornel Bastiaanse")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+494b08e40e9c8c395a400b9f2e1fade6aae05727")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a738285ce4bcd15821b60342c965e0fcb0105c75")]
 [assembly: System.Reflection.AssemblyProductAttribute("SierraStack.Mediator.Sample")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SierraStack.Mediator.Sample")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

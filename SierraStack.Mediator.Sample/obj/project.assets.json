@@ -2,32 +2,32 @@
   "version": 3,
   "targets": {
     "net9.0": {
-      "FluentValidation/10.4.0": {
+      "FluentValidation/12.0.0": {
         "type": "package",
         "compile": {
-          "lib/net6.0/FluentValidation.dll": {
+          "lib/net8.0/FluentValidation.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/net6.0/FluentValidation.dll": {
+          "lib/net8.0/FluentValidation.dll": {
             "related": ".xml"
           }
         }
       },
-      "FluentValidation.DependencyInjectionExtensions/10.4.0": {
+      "FluentValidation.DependencyInjectionExtensions/12.0.0": {
         "type": "package",
         "dependencies": {
-          "FluentValidation": "10.4.0",
+          "FluentValidation": "12.0.0",
           "Microsoft.Extensions.Dependencyinjection.Abstractions": "2.1.0"
         },
         "compile": {
-          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
+          "lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll": {
             "related": ".xml"
           }
         },
         "runtime": {
-          "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll": {
+          "lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll": {
             "related": ".xml"
           }
         }
@@ -764,42 +764,34 @@
     }
   },
   "libraries": {
-    "FluentValidation/10.4.0": {
-      "sha512": "rVI1b5L3pq3layrRKIo3N7AT3PWey8ocPZhf6zeHYf6LBBvnP1KzW3bm7KmeazOWW8m1KXMD+shfviIcKSgQ0g==",
+    "FluentValidation/12.0.0": {
+      "sha512": "8NVLxtMUXynRHJIX3Hn1ACovaqZIJASufXIIFkD0EUbcd5PmMsL1xUD5h548gCezJ5BzlITaR9CAMrGe29aWpA==",
       "type": "package",
-      "path": "fluentvalidation/10.4.0",
+      "path": "fluentvalidation/12.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "fluent-validation-icon.png",
-        "fluentvalidation.10.4.0.nupkg.sha512",
+        "fluentvalidation.12.0.0.nupkg.sha512",
         "fluentvalidation.nuspec",
-        "lib/net5.0/FluentValidation.dll",
-        "lib/net5.0/FluentValidation.xml",
-        "lib/net6.0/FluentValidation.dll",
-        "lib/net6.0/FluentValidation.xml",
-        "lib/netstandard2.0/FluentValidation.dll",
-        "lib/netstandard2.0/FluentValidation.xml",
-        "lib/netstandard2.1/FluentValidation.dll",
-        "lib/netstandard2.1/FluentValidation.xml"
+        "lib/net8.0/FluentValidation.dll",
+        "lib/net8.0/FluentValidation.xml"
       ]
     },
-    "FluentValidation.DependencyInjectionExtensions/10.4.0": {
-      "sha512": "25LzRDm9Chfyw4aPMsoE+3qkz1x2evb2/537hUcnqkhA9zpREfQYm8y1JF1LCMdcH57q5QAZ27X7dqVOcN6TOA==",
+    "FluentValidation.DependencyInjectionExtensions/12.0.0": {
+      "sha512": "B28fBRL1UjhGsBC8fwV6YBZosh+SiU1FxdD7l7p5dGPgRlVI7UnM+Lgzmg+unZtV1Zxzpaw96UY2MYfMaAd8cg==",
       "type": "package",
-      "path": "fluentvalidation.dependencyinjectionextensions/10.4.0",
+      "path": "fluentvalidation.dependencyinjectionextensions/12.0.0",
       "files": [
         ".nupkg.metadata",
         ".signature.p7s",
         "README.md",
         "fluent-validation-icon.png",
-        "fluentvalidation.dependencyinjectionextensions.10.4.0.nupkg.sha512",
+        "fluentvalidation.dependencyinjectionextensions.12.0.0.nupkg.sha512",
         "fluentvalidation.dependencyinjectionextensions.nuspec",
-        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.dll",
-        "lib/netstandard2.0/FluentValidation.DependencyInjectionExtensions.xml",
-        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.dll",
-        "lib/netstandard2.1/FluentValidation.DependencyInjectionExtensions.xml"
+        "lib/net8.0/FluentValidation.DependencyInjectionExtensions.dll",
+        "lib/net8.0/FluentValidation.DependencyInjectionExtensions.xml"
       ]
     },
     "Microsoft.Extensions.Caching.Abstractions/9.0.4": {
@@ -1806,8 +1798,6 @@
   },
   "projectFileDependencyGroups": {
     "net9.0": [
-      "FluentValidation >= 10.4.0",
-      "FluentValidation.DependencyInjectionExtensions >= 10.4.0",
       "Microsoft.Extensions.Hosting >= 9.0.4",
       "SierraStack.Mediator >= 0.1.0",
       "SierraStack.Mediator.Behaviors >= 0.1.0",
@@ -1876,14 +1866,6 @@
       "net9.0": {
         "targetAlias": "net9.0",
         "dependencies": {
-          "FluentValidation": {
-            "target": "Package",
-            "version": "[10.4.0, )"
-          },
-          "FluentValidation.DependencyInjectionExtensions": {
-            "target": "Package",
-            "version": "[10.4.0, )"
-          },
           "Microsoft.Extensions.Hosting": {
             "target": "Package",
             "version": "[9.0.4, )"
@@ -1908,25 +1890,5 @@
         "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.101/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Warning As Error: Detected package downgrade: FluentValidation from 12.0.0 to 10.4.0. Reference the package directly from the project to select a different version. \r\n SierraStack.Mediator.Sample -> SierraStack.Mediator.Behaviors -> FluentValidation (>= 12.0.0) \r\n SierraStack.Mediator.Sample -> FluentValidation (>= 10.4.0)",
-      "libraryId": "FluentValidation",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    },
-    {
-      "code": "NU1605",
-      "level": "Error",
-      "message": "Warning As Error: Detected package downgrade: FluentValidation.DependencyInjectionExtensions from 12.0.0 to 10.4.0. Reference the package directly from the project to select a different version. \r\n SierraStack.Mediator.Sample -> SierraStack.Mediator.Behaviors -> FluentValidation.DependencyInjectionExtensions (>= 12.0.0) \r\n SierraStack.Mediator.Sample -> FluentValidation.DependencyInjectionExtensions (>= 10.4.0)",
-      "libraryId": "FluentValidation.DependencyInjectionExtensions",
-      "targetGraphs": [
-        "net9.0"
-      ]
-    }
-  ]
+  }
 }
