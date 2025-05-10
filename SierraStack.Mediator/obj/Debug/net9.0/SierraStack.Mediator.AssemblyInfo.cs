@@ -17,7 +17,7 @@ using System.Reflection;
     "or CQRS, request/response messaging, and pipeline behaviors. Designed as an open" +
     " alternative to MediatR."))]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("0.1.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.0+fec2099c1e99ccfbc191acf6516abc7561d1876d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("0.1.0+e1be8d4b2a81ca89aeb66ab831e077e27c806fee")]
 [assembly: System.Reflection.AssemblyProductAttribute("SierraStack.Mediator")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SierraStack.Mediator")]
 [assembly: System.Reflection.AssemblyVersionAttribute("0.1.0.0")]

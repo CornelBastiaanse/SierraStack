@@ -10,6 +10,11 @@
     <ItemGroup>
       <ProjectReference Include="..\SierraStack.Mediator.Behaviors\SierraStack.Mediator.Behaviors.csproj" />
       <ProjectReference Include="..\SierraStack.Mediator.Extensions.Microsoft\SierraStack.Mediator.Extensions.Microsoft.csproj" />
+      <ProjectReference 
+              Include="..\SierraStack.Mediator.Generators\SierraStack.Mediator.Generators.csproj" 
+              OutputItemType="Analyzer"
+              ReferenceOutputAssembly="false"
+      />
       <ProjectReference Include="..\SierraStack.Mediator\SierraStack.Mediator.csproj" />
     </ItemGroup>
 
