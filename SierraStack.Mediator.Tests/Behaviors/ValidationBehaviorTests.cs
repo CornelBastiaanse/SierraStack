@@ -27,7 +27,7 @@ public class ValidationBehaviorTests
         var options = Options.Create(new ValidationBehaviorOptions());
         var behavior = new ValidationBehavior<TestRequest, string>([adapter], options);
 
-        var ex = await Assert.ThrowsAsync<ValidationException>(() =>
+        var ex = await Assert.ThrowsAsync<SierraStack.Validation.ValidationException>(() =>
             behavior.HandleAsync(new TestRequest(), CancellationToken.None, () => Task.FromResult("OK")));
 
         Assert.Single(ex.Errors);
