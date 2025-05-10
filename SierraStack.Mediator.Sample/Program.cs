@@ -3,7 +3,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using SierraStack.Mediator.Behaviors.Extensions;
 using SierraStack.Mediator.Core;
-using SierraStack.Mediator.Extensions.Microsoft.DependencyInjection;
+using SierraStack.Mediator.Generated;
 using SierraStack.Mediator.Sample.Notifications;
 using SierraStack.Mediator.Sample.Requests;
 
@@ -11,7 +11,7 @@ var host = Host
     .CreateDefaultBuilder()
     .ConfigureServices(services =>
     {
-        services.AddSierraStackMediator(typeof(Program).Assembly);
+        services.AddGeneratedHandlers();
         services.AddSierraStackBehaviors();
         services.AddValidatorsFromAssembly(typeof(Program).Assembly);
     })
