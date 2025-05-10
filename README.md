@@ -106,3 +106,18 @@ Please open an issue or pull request to get started.
 https://github.com/sierrastack/SierraStack
 
 📍 See the [full roadmap](./ROADMAP.md) for upcoming features and plans.
+
+# SierraStack.Mediator Benchmarks
+
+These benchmarks use BenchmarkDotNet to measure mediator performance across common scenarios.
+
+| Scenario               | Mean     | Allocated |
+|------------------------|----------|-----------|
+| Simple Request         | 633 ns   | 952 B     |
+| + Logging Behavior     | TBD      | TBD       |
+| + Logging + Retry      | TBD      | TBD       |
+
+Run with:  
+```bash
+dotnet run -c Release --project SierraStack.Mediator.Benchmarks
+```
