@@ -1,6 +1,8 @@
 using FluentValidation;
+using Microsoft.Extensions.Options;
 using SierraStack.Mediator.Abstractions;
 using SierraStack.Mediator.Behaviors.Validation;
+using SierraStack.Mediator.Behaviors.Validation.Fluent;
 
 namespace SierraStack.Mediator.Tests.Behaviors;
 
@@ -9,7 +11,8 @@ public class ValidationBehaviorTests
     [Fact]
     public async Task Should_Allow_Request_When_No_Validators()
     {
-        var behavior = new ValidationBehavior<TestRequest, string>([]);
+        var options = Options.Create(new ValidationBehaviorOptions());
+        var behavior = new ValidationBehavior<TestRequest, string>([], options);
 
         var response = await behavior.HandleAsync(new TestRequest(), CancellationToken.None, () => Task.FromResult("OK"));
 
@@ -19,13 +22,16 @@ public class ValidationBehaviorTests
     [Fact]
     public async Task Should_Throw_When_Validation_Fails()
     {
-        var validator = new FailingValidator();
-        var behavior = new ValidationBehavior<TestRequest, string>([validator]);
+        var fluentValidator = new FailingValidator();
+        var adapter = new FluentValidatorAdapter<TestRequest>(fluentValidator);
+        var options = Options.Create(new ValidationBehaviorOptions());
+        var behavior = new ValidationBehavior<TestRequest, string>([adapter], options);
 
-        var ex = await Assert.ThrowsAsync<ValidationException>(() =>
+        var ex = await Assert.ThrowsAsync<SierraStack.Validation.ValidationException>(() =>
             behavior.HandleAsync(new TestRequest(), CancellationToken.None, () => Task.FromResult("OK")));
 
-        Assert.Contains("Name is required", ex.Message);
+        Assert.Single(ex.Errors);
+        Assert.Equal("Name is required", ex.Errors.First().ErrorMessage);
     }
 
     private class TestRequest : IRequest<string> { }
