@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <Authors>Cornel Bastiaanse</Authors>
-        <Version>0.2.0</Version>
+        <Version>0.2.1</Version>
         <PackageId>SierraStack.Mediator.Extensions.Microsoft</PackageId>
         <Description>Extension methods to integrate SierraStack.Mediator with Microsoft.Extensions.DependencyInjection. Supports automatic handler registration and pipeline wiring.</Description>
         <ImplicitUsings>enable</ImplicitUsings>
