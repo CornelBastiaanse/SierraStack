@@ -3,7 +3,7 @@
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <Authors>Cornel Bastiaanse</Authors>
-        <Version>0.1.0</Version>
+        <Version>0.2.0</Version>
         <PackageId>SierraStack.Mediator</PackageId>
         <Description>A lightweight and extensible in-process mediator for .NET with built-in support for CQRS, request/response messaging, and pipeline behaviors. Designed as an open alternative to MediatR.</Description>
         <ImplicitUsings>enable</ImplicitUsings>

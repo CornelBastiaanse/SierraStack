@@ -5,6 +5,10 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <LangVersion>latest</LangVersion>
+        <Authors>Cornel Bastiaanse</Authors>
+        <Version>0.2.0</Version>
+        <PackageId>SierraStack.Validation</PackageId>
+        <Description>A lightweight, extensible validation abstraction for .NET. Designed to integrate seamlessly with SierraStack.Mediator and provide a flexible alternative to FluentValidation.</Description>
     </PropertyGroup>
 
 </Project>
