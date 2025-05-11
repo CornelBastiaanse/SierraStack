@@ -20,7 +20,7 @@ Let us know what you'd love to see next.
 - ✅ In-process event publishing via `INotification`
 - ✅ Built-in pipeline behaviors for:
     - Logging
-    - Validation (FluentValidation)
+    - Validation (FluentValidation + Custom Abstraction)
     - Retry (Polly)
     - Caching
     - Performance measurement
@@ -33,7 +33,7 @@ Let us know what you'd love to see next.
 
 ## 📦 Installation
 
-Coming soon on NuGet:
+Install from NuGet:
 
 ```bash
 dotnet add package SierraStack.Mediator
@@ -41,7 +41,7 @@ dotnet add package SierraStack.Mediator.Behaviors
 dotnet add package SierraStack.Mediator.Extensions.Microsoft
 ```
 
-📌 Until published, clone this repo and reference the projects directly.
+📌 See NuGet Gallery for all available packages.
 
 ## 🚀 Getting Started
 ### 1. Define a request
@@ -51,6 +51,7 @@ public class Ping : IRequest<string>
     public string Message { get; set; } = "Ping!";
 }
 ```
+
 ### 2. Define a handler
 ```csharp
 public class PingHandler : IRequestHandler<Ping, string>
@@ -61,11 +62,13 @@ public class PingHandler : IRequestHandler<Ping, string>
     }
 }
 ```
+
 ### 3. Register services (using built-in DI)
 ```csharp
 services.AddSierraStackMediator(typeof(PingHandler).Assembly);
 services.AddSierraStackBehaviors(); // optional
 ```
+
 ### 4. Use the mediator
 ```csharp
 var result = await mediator.SendAsync(new Ping());
@@ -79,15 +82,22 @@ services.AddSierraStackBehaviors();
 ```
 
 Or register them individually:
+
 ```csharp
 services
     .AddLoggingBehavior()
-    .AddValidationBehavior()
-    .AddRetryBehavior()
-    .AddCachingBehavior()
-    .AddPerformanceBehavior()
-    .AddExceptionHandlingBehavior();
+    .AddValidationBehavior(options =>
+    {
+        options.ThrowOnFailure = true;
+        options.OnFailure = failures =>
+        {
+            foreach (var failure in failures)
+                Console.WriteLine($"Validation failed: {failure.PropertyName} - {failure.ErrorMessage}");
+        };
+    });
 ```
+
+Validation uses a SierraStack-specific abstraction and can integrate with FluentValidation or custom providers.
 
 ## 🧪 Testing
 All core components and built-in behaviors are covered with unit tests using xUnit. To run:

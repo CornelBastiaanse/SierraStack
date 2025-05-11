@@ -27,17 +27,28 @@ Have an idea? Open a [discussion](https://github.com/CornelBastiaanse/SierraStac
 
 ---
 
-## 🔄 Upcoming (v0.2.x)
+## ✅ Current (v0.2.x)
 
-- [X] `IRequestPreProcessor<TRequest>` and `IRequestPostProcessor<TRequest, TResponse>` support
-- [X] Timeout and CircuitBreaker behaviors
-- [ ] Source generator for handler resolution
-- [ ] Optional custom validation abstraction (to replace FluentValidation)
+- [x] `IRequestPreProcessor<TRequest>` and `IRequestPostProcessor<TRequest, TResponse>` support
+- [x] Timeout behavior with configurable options
+- [x] Custom validation abstraction (decoupled from FluentValidation)
+- [x] FluentValidation adapter and integration method
+- [x] ValidationBehavior with options
+- [x] Source generator foundation (compile-time handler discovery)
+- [x] Initial benchmarks with BenchmarkDotNet
+
+---
+
+## 🧭 Next (v0.3.0)
+
+- [ ] Source generator: AddHandlersFromSource()
 - [ ] Metrics integration (OpenTelemetry or App Insights)
 - [ ] Add correlation ID behavior
 - [ ] Improve performance of pipeline executor
 - [ ] Benchmarks comparing to MediatR
 - [ ] GitHub Release notes generator
+- [ ] Behavior lifetime customization
+- [ ] Add IRequestPre/PostProcessor unit test templates
 
 ---
 
